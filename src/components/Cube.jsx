@@ -29,7 +29,7 @@ export function Cube ({ id, position, texture }) {
       if (e.altKey) {
         e.stopPropagation()
         const { x, y, z } = ref.current.position
-        removeCube(id)
+        removeCube(x, y, z)
       }
     }}
     >
