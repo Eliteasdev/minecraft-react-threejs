@@ -4,7 +4,7 @@ import { useKeyboard } from '../hooks/useKeyboard'
 import { useEffect, useState } from 'react'
 
 export function TextureSelect () {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [texture, setTexture] = useStore(state => [state.texture, state.setTexture])
 
   const {
@@ -46,7 +46,7 @@ export function TextureSelect () {
     console.log(selectedTexture)
   }, [dirt, grass, glass, wood, log])
   return (
-    <div className={`texture-selector ${visible ? '' : 'hidden'}`}>
+    <div className={'texture-selector'}>
       {
         Object
           .entries(images)
