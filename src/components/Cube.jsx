@@ -35,9 +35,11 @@ export function Cube ({ id, position, texture }) {
     >
       <boxGeometry/>
       <meshStandardMaterial
+      map={activeTexture}
       color={isHovered ? 'grey' : 'white'}
-      transparent
-      map={activeTexture} />
+      transparent={true}
+      opacity={texture === 'glass' ? 0.7 : 1}
+       />
     </mesh>
   )
 }
