@@ -3,7 +3,7 @@ import { useBox } from '@react-three/cannon'
 import * as textures from '../images/textures'
 import { useState } from 'react'
 
-export function Cube ({ position, texture }) {
+export function Cube ({ id, position, texture }) {
   const [removeCube] = useStore(state => [state.removeCube])
 
   const [isHovered, setIsHovered] = useState(false)
@@ -29,7 +29,7 @@ export function Cube ({ position, texture }) {
       if (e.altKey) {
         e.stopPropagation()
         const { x, y, z } = ref.current.position
-        removeCube(x, y, z)
+        removeCube(id)
       }
     }}
     >
