@@ -4,7 +4,7 @@ import * as textures from '../images/textures'
 import { useState } from 'react'
 
 export function Cube ({ id, position, texture }) {
-  const [removeCube] = useStore(state => [state.removeCube])
+  const [addCube, removeCube] = useStore(state => [state.addCube, state.removeCube])
 
   const [isHovered, setIsHovered] = useState(false)
   const [ref] = useBox(() => ({
@@ -30,6 +30,29 @@ export function Cube ({ id, position, texture }) {
         e.stopPropagation()
         const { x, y, z } = ref.current.position
         removeCube(x, y, z)
+      } else {
+        e.stopPropagation()
+        const clickedFace = Math.floor(e.faceIndex / 2)
+        const { x, y, z } = ref.current.position
+
+        if (clickedFace === 0) {
+          addCube(x + 1, y, z)
+        }
+        if (clickedFace === 1) {
+          addCube(x - 1, y, z)
+        }
+        if (clickedFace === 2) {
+          addCube(x, y + 1, z)
+        }
+        if (clickedFace === 3) {
+          addCube(x, y - 1, z)
+        }
+        if (clickedFace === 4) {
+          addCube(x, y, z + 1)
+        }
+        if (clickedFace === 5) {
+          addCube(x, y, z - 1)
+        }
       }
     }}
     >
@@ -39,7 +62,7 @@ export function Cube ({ id, position, texture }) {
       color={isHovered ? 'grey' : 'white'}
       transparent={true}
       opacity={texture === 'glass' ? 0.7 : 1}
-       />
+      />
     </mesh>
   )
 }

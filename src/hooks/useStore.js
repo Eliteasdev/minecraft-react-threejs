@@ -3,16 +3,7 @@ import { create } from 'zustand'
 
 export const useStore = create(set => ({
   texture: 'dirt',
-  cubes: [{
-    id: nanoid(),
-    pos: [1, 1, 1],
-    texture: 'dirt'
-  }, {
-    id: nanoid(),
-    pos: [1, 5, 1],
-    texture: 'log'
-  }
-  ],
+  cubes: [],
   addCube: (x, y, z) => {
     set(state => ({
       cubes: [...state.cubes, {
